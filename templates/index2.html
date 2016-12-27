@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>TBWA\ Descubre La Capsula del Tiempo de TBWA</title>
+<meta name="viewport" content="width=900px, user-scalable=0"/>
+<meta name="description" content="La navidad es la época de los buenos propósitos. Elige el tuyo para 2017, crea tu cápsula del tiempo y felicita a quien tú quieras el nuevo año de una manera diferente." />
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@tbwaes">
+<meta name="twitter:title" content="Descubre La Capsula del Tiempo de TBWA">
+<meta name="twitter:description" content="La navidad es la época de los buenos propósitos. Elige el tuyo para 2017, crea tu cápsula del tiempo y felicita a quien tú quieras el nuevo año de una manera diferente.">
+<meta name="twitter:image" content="http://www.example.com/image.jpg">
+
+<!-- Open Graph data -->
+<meta property="og:title" content="Descubre La Capsula del Tiempo de TBWA" />
+<meta property="og:url" content="http://www.tbwadisruptionxmas.com/" />
+<meta property="og:image" content="http://tbwadisruptionxmas.com/images/.jpg" />
+<meta property="og:description" content="La navidad es la época de los buenos propósitos. Elige el tuyo para 2017, crea tu cápsula del tiempo y felicita a quien tú quieras el nuevo año de una manera diferente." />
+<link href="{{ URLHOME }}css/AvertaFonts.css" rel="stylesheet" type="text/css">
+<link href="{{ URLHOME }}css/estilos.css" rel="stylesheet" type="text/css">
+<script src="{{ URLHOME }}js/jquery-2.2.3.min.js"></script>
+<script src="{{ URLHOME }}js/minified/plugins/CSSPlugin.min.js"></script>
+<script src="{{ URLHOME }}js/minified/easing/EasePack.min.js"></script>
+<script src="{{ URLHOME }}js/minified/TweenLite.min.js"></script>
+<script src="{{ URLHOME }}js/main.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42310024-39', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body>
+<header>
+    <div id="logo"><a href="http://tbwa.es" onclick="ga('send', 'event','boton','tbwa');" target="_blank"><img src="{{ URLHOME }}images/logo_tbwa.png"></a></div>
+</header>
+<div id="sonido"><a style="cursor:pointer" onclick="controlSonido();ga('send', 'event','boton','Audio');"><img src="{{ URLHOME }}images/sonido_on.png" id="sonidoon" ><img src="{{ URLHOME }}images/sonido_off.png" id="sonidooff" style="display:none"></a></div>
+<div id="contenedorgeneral">
+<div id="modulo1">
+    <form name="form1" id="form1" method="POST" action="{{ ACTIONFORM }}" enctype="multipart/form-data">
+    <div id="izq" onMouseOver="izqOn();" onMouseOut="izqOff();" onClick="seleccionNormal();ga('send', 'event','boton','Tradicional');"></div>
+    <div id="dch"onMouseOver="dchOn();" onMouseOut="dchOff();" onClick="seleccionDisruption();ga('send', 'event','boton','Disruptive');"></div>
+    <div id="tit_tra"><img src="{{ URLHOME }}images/titulo_tradicional.png"></div>
+    <div id="tit_dis"><img src="{{ URLHOME }}images/titulo_disruption.png" id="xmas"><img src="{{ URLHOME }}images/titulo_lacapsula.png" id="lacapsula" style="display:none"></div>
+    <div id="buzon"><img src="{{ URLHOME }}images/azul.png" id="azul"><img src="{{ URLHOME }}images/rojo.png" id="rojo"></div>
+    <div id="buzonmask" style="display:none"></div>
+    <div id="monster" style="display:none">
+        <div id="hmonster"><img src="{{ URLHOME }}images/monster/head.gif"></div>
+        <div id="bmonster"><img src="{{ URLHOME }}images/monster/body.png"></div>
+    </div>
+	<div id="backslash"></div>
+    <div id="mountains"></div>
+	<div id="fondo"><!--<video id="video" loop autoplay muted="" src="video/bg2.mp4" type="video/mp4"></video>-->
+    </div>
+    <div id="intro_disruption" style="display:none">
+    	<p><img src="{{ URLHOME }}images/instruc1.png" id="ins1"><img src="{{ URLHOME }}images/instruc2.png" id="ins2"><img src="{{ URLHOME }}images/instruc3.png" id="ins3"></p>
+        <p><a onClick="paso1('disruption');ga('send', 'event','boton','Disruptive_participa');" class="boton_gris">Participa</a></p>
+    </div>
+    <div id="miformulario" style="display:none">
+   		<div id="paso1_tra" style="display:none">
+        	<div class="imagen"><img src="{{ URLHOME }}images/felicitacion_normal.png"></div>
+           <div class="boton"><a onClick="paso2('alerta');ga('send', 'event','boton','Tradicional_siguiente');" class="boton_gris2">Siguiente</a></div>
+        </div>
+    	<div id="paso1_dis" style="display:none">
+        	<div class="titular"><h1>Estamos preparando tu cápsula</h1><h2>mientras formulas tu propósito</h2></div>
+            <div class="campotexto"><textarea class="mensaje" id="mensaje" name="mensaje" placeholder="Escribe aquí tus propósitos para el nuevo año..."></textarea></div>
+            <div class="botones1"><input style="display:none;" type="file" name="imagen" id="imagen" />
+                    <a class="boton_examinar" id="botonexaminar" onclick="ga('send', 'event','boton','Disruptive_examinar');">Examinar</a><span class="boton_gris3" style="display:none">Imagen subida</span><a id="siguiente" class="boton_gris2" onclick="ga('send', 'event','boton','Disruptive_siguiente');">Siguiente</a></div>
+            <div id="alerta">
+            	<div id="message"></div>
+                <div id="loading" style="display:none"><img src="{{ URLHOME }}images/loader.gif"></div>
+            </div>
+        </div>
+        
+        <div id="paso2_dis" style="display:none">
+            <div class="titular"><h1>Procesando propósito...</h1></div>
+            <div class="opciones"><input type="radio" name="personas2" value="yo" checked onClick="ocultar('otro2');ga('send', 'event','boton','Disruptive_Para_ti');"> Es para tí &nbsp;&nbsp;&nbsp;&nbsp <input type="radio" name="personas2" id="personas2" value="otros" onClick="mostrar('otro2');ga('send', 'event','boton','Disruptive_Para_Otro');"> Es compartido con otra persona</div>
+            <div class="campo1"><input type="text" id="nombre" name="nombre" class="textoform2" placeholder="Escribe aquí tu nombre..."><input type="email" id="email" name="email" class="textoform2" placeholder="Escribe aquí tu email..."></div>
+            <div class="campo2" style="display:none" id="otro2"><input type="email" id="sunombre" name="sunombre" class="textoform2" placeholder="Escribe aquí su nombre..."><input type="email" id="suemail" name="suemail" class="textoform2" placeholder="Escribe aquí su email..."></div>
+            <div class="boton"><a id="enviar" class="boton_gris2">Enviar</a></div>
+        </div>
+    </div>
+    <div id="alertaTradicional" style="display:none">
+			<div onClick="cambiaraDisruption();ga('send', 'event','boton','Tradicional_No');" class="boton_disruptivo"></div>
+        </div>
+    <div id="procesando" style="display:none">
+    	<div class="texto"><strong>Encapsulando</strong><br>Piensa cuánto tiempo quieres enterrar tu propósito</div>
+        <div id="contenedor">
+            <div id="barra">
+                <div id="progreso"></div>
+            </div>
+        </div>
+    </div>
+    <div id="capsula"  style="display:none"><img src="{{ URLHOME }}images/pildora.png"></div>
+    <div id="sombra" style="display:none"></div>
+    <input type="hidden" name="momentos" id="momentos" value="1" />
+</form>
+</div>
+<div id="modulo2" style="display:none">
+	<div id="tubo1"><img src="{{ URLHOME }}images/modulo2/finaltubo.png"></div>
+	<div id="rueda"><img src="{{ URLHOME }}images/modulo2/rueda.png"></div>
+    <div id="telefono"><img src="{{ URLHOME }}images/modulo2/telefono.gif"></div>
+    <div id="luz"><img src="{{ URLHOME }}images/modulo2/luz.png"></div>
+    <div id="cabeza"><img src="{{ URLHOME }}images/modulo2/cabeza.png"></div>
+    <div id="humillo"><img src="{{ URLHOME }}images/modulo2/humo.png"></div>
+    <div id="tortuga"><img src="{{ URLHOME }}images/modulo2/tortuga.gif"></div>
+</div>
+<div id="modulo3" style="display:none">
+	<div id="canasta" class="micanasta"></div>
+    <div id="dientes"><img src="{{ URLHOME }}images/modulo3/dientes.gif"></div>
+    <div id="blink"><img src="{{ URLHOME }}images/modulo3/blink.gif"></div>
+</div>
+<div id="modulo4" style="display:none">
+	<div id="ojoreptil1"><img src="{{ URLHOME }}images/modulo4/ojoreptil1.gif"></div>
+	<div id="tubo2"><img src="{{ URLHOME }}images/modulo4/tubo.png"></div>
+    <div id="capsula2"><img src="{{ URLHOME }}images/modulo4/capsula.png"></div>
+    <div id="sombrero"><img src="{{ URLHOME }}images/modulo4/sombrero.png"></div>
+    <div id="flasheo"></div>
+    <div id="reptiliana"><img src="{{ URLHOME }}images/modulo4/reptiliana.gif"></div>
+    <div id="brillo"></div>
+</div>
+<div id="modulo5" style="display:none">
+	<div id="astronauta"></div>
+    <div id="globo"></div>
+    <div id="ovni"></div>
+    <div id="capsula3"><img src="{{ URLHOME }}images/modulo4/capsula.png"></div>
+    <div id="flasheo2"></div>
+</div>
+<div id="modulo6" style="display:none">
+	<div id="tubo3"><img src="{{ URLHOME }}images/modulo6/tubo.png"></div>
+    <div id="capsula4"><img src="{{ URLHOME }}images/modulo4/capsula.png"></div>
+	<div id="animaciocofre" class="cofre"></div>
+    <div id="tapacofre"><img src="{{ URLHOME }}images/modulo6/delantecofre.png"></div>
+    <div id="bolas"><img src="{{ URLHOME }}images/modulo6/bolas.png"></div>
+    <div id="jesus"></div>
+    <div id="sombra2" style="display:none"></div>
+    <div id="pantallafinal" style="display:none">
+		<div id="pasofecha">
+            <div class="titular"><h1>¿Ya lo has decidido?</h1><h2>Selecciona cuándo se abrirá tu cápsula</h2></div>    
+            <div class="botones">
+            	<!--<img src="{{ URLHOME }}images/opciones/opcion1.png" class="btnmeses" onClick="quitafinal(1);">    -->
+                <img src="{{ URLHOME }}images/opciones/opcion2.png" class="btnmeses" onClick="quitafinal(2);ga('send', 'event','boton','Disruptive_3meses');">    
+                <img src="{{ URLHOME }}images/opciones/opcion3.png" class="btnmeses" onClick="quitafinal(3);ga('send', 'event','boton','Disruptive_6meses');">    
+                <img src="{{ URLHOME }}images/opciones/opcion4.png" class="btnmeses" onClick="quitafinal(4);ga('send', 'event','boton','Disruptive_9meses');">
+			</div>
+		</div>
+        <div id="pasofinal" style="display:none">
+        	<div class="titular2"><h1>¡Muchas gracias por participar!</h1><h2>Guardaremos tu propósito a buen recaudo mientras se cumplen.</h2><h2 class="sep">Échale un rato y descubre los significados ocultos de cada estracto.</h2></div>
+                <div class="compartir">Compartir<br><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//tbwadisruptionxmas.com" target="_blank" class="btn_compartir"><img src="{{ URLHOME }}images/fb_share.png" onclick="ga('send', 'event','boton','Compartir_FB');"></a>
+                                                <a href="https://twitter.com/home?status=http://tbwadisruptionxmas.com" target="_blank" class="btn_compartir"><img src="{{ URLHOME }}images/tw_sharer.png" onclick="ga('send', 'event','boton','Compartir_Twitter');"></a>
+                                                <a href="whatsapp://send?text=http://tbwadisruptionxmas.com" data-action="share/whatsapp/share" target="_blank" class="btn_compartir"><img src="{{ URLHOME }}images/wt_sharer.png" onclick="ga('send', 'event','boton','Compartir_Whatsapp');"></a></div>
+        </div>
+        <div id="cierre" onClick="cerrarFinal();ga('send', 'event','boton','Disruptive_cerrar');">X</div>
+    </div>
+</div>
+</div>
+<div id="navegador" style="display:none">
+    <div id="circulo1" onClick="GoTo(1);ga('send', 'event','boton','Pantalla1');"></div>
+    <div id="circulo2" onClick="GoTo(2);ga('send', 'event','boton','Pantalla2');"></div>
+    <div id="circulo3" onClick="GoTo(3);ga('send', 'event','boton','Pantalla3');"></div>
+    <div id="circulo4" onClick="GoTo(4);ga('send', 'event','boton','Pantalla4');"></div>
+    <div id="circulo5" onClick="GoTo(5);ga('send', 'event','boton','Pantalla5');"></div>
+    <div id="circulo6" onClick="GoTo(6);ga('send', 'event','boton','Pantalla6');" class="marcado"></div>
+</div>
+<div id="mensajeAlerta" onClick="cerrarAlerta();" style="display:none">
+
+</div>
+
+<audio id="musica" src="{{ URLHOME }}sonidos/musica.mp3" autoplay loop preload="auto"></audio>
+<script>
+    $("#siguiente").click(function(e){
+            if($("#mensaje").val() == '' || $('#mensaje').val().length > 300){
+				mostrarMensajeAlerta("Debes introducir un mensaje, no superior a 300 caracteres.");
+                e.preventDefault(); return;
+            } else { paso2('disruption'); } 
+    });
+    $("#botonexaminar").click(function(){
+        $(this).prev().trigger('click');
+    });
+    
+    $("#enviar").click(function(e){
+        ga('send', 'event','boton','Disruptive_enviar');
+        if($("#nombre").val() == ''){
+		mostrarMensajeAlerta("Debes introducir tu nombre.");
+            e.preventDefault(); return; 
+        } else if($("#email").val() == '' || !validateEmail($("#email").val())){
+			mostrarMensajeAlerta("Debes introducir tu email válido");
+           e.preventDefault(); return;
+       } else if($("#personas2:checked").val() == 'otros' && $("#suemail").val() == ''){
+		   mostrarMensajeAlerta("Debes introducir el email de la otra persona");
+            e.preventDefault(); return;
+       } else if($("#personas2:checked").val() == 'otros' && $("#sunombre").val() == ''){
+		   mostrarMensajeAlerta("Debes introducir el nombre de la otra persona");
+            e.preventDefault(); return;
+       } else {
+            EnviarAvion(); 
+       }
+    });
+    
+    function enviaaa(){
+        
+        var form = $('form')[0];
+        var formData = new FormData(form);
+
+        $.ajax({
+            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url         : 'index.php', // the url where we want to POST
+            data        : formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+        }).done(function(data) {
+            todook();
+            if ( ! data.success) {
+                 
+            } else {
+                 
+            }
+        });
+
+    }
+     $('#imagen').change(function(e){ 
+        e.preventDefault();
+        var form = $('form')[0];
+        var formData = new FormData(form);
+        
+        $("#message").empty();
+        //$('#loading').show();
+        $.ajax({
+            url: "http://tbwadisruptionxmas.com/ajax-php-file.php", // Url to which the request is send
+            type: "POST",             // Type of request to be send, called as method
+            data: formData, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+            contentType: false,       // The content type used when sending data to the server.
+            cache: false,             // To unable request pages to be cached
+            processData:false,        // To send DOMDocument or non processed data file it is set to false
+            success: function(data)   // A function to be called if request succeeds
+        {
+            if(data.toString() == ''){
+            $('.boton_examinar').hide(); $('.boton_gris3').show();$('#siguiente').show();
+            } else {
+            $("#message").html(data);$('#imagen').val('');
+            }
+        }
+        });
+    });
+    
+   function validateEmail($email) {
+  var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+  return emailReg.test( $email );
+}
+</script>
+</body>
+</html>
